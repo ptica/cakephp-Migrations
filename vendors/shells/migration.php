@@ -508,6 +508,7 @@ TEXT;
 		if ($type == 'app' && !class_exists($name)) {
 			$name = Inflector::camelize($this->params['app']) . 'Schema';
 		}
+		$name = preg_replace('/\./', '', $name);
 
 		$plugin = ($type === 'app') ? null : $type;
 		$schema = new $name(array('connection' => $this->connection, 'plugin' => $plugin));
